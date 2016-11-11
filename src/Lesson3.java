@@ -1,5 +1,7 @@
 import java.io.Console;
+import java.math.BigInteger;
 import java.util.Timer;
+import java.util.stream.IntStream;
 
 /**
  * Created by Oris on 09.11.2016.
@@ -142,8 +144,93 @@ public class Lesson3 extends Lesson {
     }
 
     private static void Task10(){
+        System.out.print("Введите целое число: \n");
+        System.out.print("Число 1: ");
+        int a1 = sc.nextInt();
+        int a2 = sc.nextInt();
+
+        BigInteger a = factorial(a1);
+        BigInteger b = factorial(a2);
+        BigInteger d = factorial(a2+1,a1);
+        BigInteger e = d.multiply(b);
+        System.out.print(a+"\n"+b+"\n"+d+"\n"+e);
+    }
+
+    private static BigInteger factorial(int end){
+        return factorial(2,end);
+    }
+
+    private static BigInteger factorial(int start, int end){
+        if(start<0||end<0)
+            return BigInteger.valueOf(0);
+        if(start==0||end==0)
+            return BigInteger.valueOf(1);
+        if(end==1||end==2)
+            return BigInteger.valueOf(end);
+        if(start<1000&&end<1000)
+            return treeFactorial(start,end);
+        return IntStream.rangeClosed(start,end).parallel()
+                .mapToObj(BigInteger::valueOf).reduce(BigInteger::multiply).get();
+    }
+
+    private static BigInteger treeFactorial(int l, int r) {
+        if(l>r)
+            return BigInteger.valueOf(1);
+        if(l==r)
+            return BigInteger.valueOf(l);
+        if(r-l==1)
+            return BigInteger.valueOf(l*r);
+        int m = (l+r)/2;
+        return treeFactorial(l,m).multiply(treeFactorial(m+1,r));
+    }
+
+    private static void Task11(){
+        System.out.print("Введите два целых числа: \n");
+        System.out.print("Число n: ");
+        int n = sc.nextInt();
+        System.out.print("Число k: ");
+        int k = sc.nextInt();
+
+        BigInteger factK;
+        BigInteger factN;
+        BigInteger factNSubK;
+
+        if(n<k||n<=0||k<0) {
+            System.out.print(0);
+            return;
+        }
+        factK = factorial(k);
+
+        if(n>k){
+            factN = factorial(k+1,n).multiply(factK);
+            if(n-k==k)
+            {
+                factNSubK=factK;
+            }
+            else
+            {
+                if(n-k>k){
+                    factNSubK = factorial(k,n-k).multiply(factK);
+                }
+                else
+                {
+                    factNSubK = factorial(n-k);
+                }
+            }
+        }
+        else
+        {
+            factN = factK;
+            factNSubK = BigInteger.ONE;
+        }
+
+        BigInteger c = factN.divide(factK.multiply(factNSubK));
+
+        System.out.print(c);
+
 
     }
+
 
     public static void main(String[] args) {
         //Task1();
@@ -155,5 +242,7 @@ public class Lesson3 extends Lesson {
         //Task7();
         //Task8();
         //Task9();
+        //Task10();
+        //Task11();
     }
 }
