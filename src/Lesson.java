@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -5,4 +6,5 @@ import java.util.Scanner;
  */
 public class Lesson {
     public static Scanner sc = new Scanner(System.in);
+    public static Random r = new Random();
 }
