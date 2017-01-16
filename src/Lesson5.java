@@ -192,6 +192,36 @@ public class Lesson5 extends Lesson {
     }
 //---------------------------------Математические операции-----------------------------------------
 
+    private static int GCD(int a, int b){
+        while(a!=0 && b!=0){
+            if(a>b)
+                a%=b;
+            else
+                b%=a;
+        }
+        return a+b;
+    }
+
+    private static int LCM(int a, int b){
+        return a/GCD(a,b)*b;
+    }
+
+
+    private static void Task12(){
+        System.out.println("Введите значения");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        int d = sc.nextInt();
+
+        int y = LCM(b,d);
+        int x = a*y/b+c*y/d;
+        int gcd = GCD(x,y);
+        x/=gcd;
+        y/=gcd;
+        System.out.println(x+"/"+y);
+    }
+
     public static void main(String[] args) {
         //Массивы
         //Task1();
@@ -207,6 +237,6 @@ public class Lesson5 extends Lesson {
         //Task10();
         //Task11();
         //Математические операции
-        //
+        //Task12();
     }
 }

@@ -96,6 +96,82 @@ public class Lesson4 extends Lesson {
         System.out.print((m | n) << deg);
     }
 
+    private static void Task6789() {
+        System.out.print("Введите натуральное число: \n");
+        int m = sc.nextInt();
+
+        int div = 10;
+        int digit;
+        int max = 0;
+        int min = 9;
+        int counter = 0;
+        int sum = 0;
+
+        do{
+            counter++;
+            digit = m%div;
+            if(digit>max) max=digit;
+            if(digit<min) min=digit;
+            sum+=digit;
+            m=m/10;
+        }while (m!=0);
+        System.out.print("Максимальное: "+max+"; Минимальное: "+min+"; Количество цифр: "+counter
+                +"; Сумма цифр: "+sum);
+    }
+
+    private static void Task10_11_12_13(){
+        int a;
+        int max=Integer.MIN_VALUE;
+        int min=Integer.MAX_VALUE;
+        int counter = 0;
+        int sum = 0;
+
+        while (true)
+        {
+            System.out.print("Введите число: ");
+            a = sc.nextInt();
+            if(a==0) break;
+            counter++;
+            sum+=a;
+            if(a<min)min=a;
+            if(a>max)max=a;
+        }
+
+        System.out.print("Максимальное: "+max+"; Минимальное: "+min+"; Количество цифр: "+counter
+                +"; Сумма цифр: "+sum);
+
+    }
+
+    private static void Task14() {
+        System.out.print("Введите число: ");
+        int a = sc.nextInt();
+        int i=1;
+        int pow = 1;
+        while(pow<=a)
+        {
+            System.out.println(pow);
+            i++;
+            pow=i*i;
+        }
+    }
+
+    private static void Task15(){
+        System.out.print("Введите число: ");
+        int a = sc.nextInt();
+        if(a>0){
+            while ((a%2)==0)
+            {
+                if((a/=2)==1)
+                {
+                    System.out.print("Yes");
+                    return;
+                }
+            }
+        }
+        System.out.print("No");
+    }
+
+
 
     public static void main(String[] args) {
         //Task1();
@@ -103,5 +179,13 @@ public class Lesson4 extends Lesson {
         //Task3();
         //Task4();
         //Task5();
+        //Task6789();
+        //Task10_11_12_13();
+        //Task14();
+        //Task15();
+
     }
+
+
+
 }

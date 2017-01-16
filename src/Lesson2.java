@@ -155,7 +155,7 @@ public class Lesson2 extends Lesson {
 
     }
     public static void main(String[] args) {
-//        Task1();
+        Task1();
 //        Task2();
 //         Task3();
 //         Task4();
@@ -164,6 +164,6 @@ public class Lesson2 extends Lesson {
 //        Task7();
 //        Task8();
 //        Task9();
-        Task10();
+        //Task10();
     }
 }
